@@ -1,0 +1,48 @@
+<div class="login-form">
+  <mat-card>
+    <mat-card-content>
+      <h1>Login</h1>
+
+      <form [formGroup]="loginForm.baseForm" (ngSubmit)="onLogin()">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            formControlName="email"
+            type="text"
+            placeholder="Email"
+            required
+          />
+          <mat-error *ngIf="checkField('email')">
+            {{ loginForm.errorMessage }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input separator">
+          <input
+            matInput
+            formControlName="password"
+            [type]="hide ? 'password' : 'text'"
+            placeholder="Password"
+            required
+          />
+          <button mat-icon-button matSuffix (click)="hide = !hide">
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+
+          <mat-error *ngIf="checkField('password')">
+            {{ loginForm.errorMessage }}
+          </mat-error>
+        </mat-form-field>
+
+        <button
+          [disabled]="loginForm.baseForm.invalid"
+          mat-raised-button
+          type="submit"
+          color="primary"
+        >
+          Login
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

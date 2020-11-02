@@ -1,0 +1,74 @@
+<div class="register-form">
+  <mat-card>
+    <mat-card-content>
+      <h1>Register</h1>
+
+      <form [formGroup]="registerForm.baseForm" (ngSubmit)="onRegister()">
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            formControlName="name"
+            type="text"
+            placeholder="Name"
+            required
+          />
+          <mat-error *ngIf="checkField('name')">
+            {{ registerForm.errorMessage }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            formControlName="lastname"
+            type="text"
+            placeholder="Lastname"
+            required
+          />
+          <mat-error *ngIf="checkField('lastname')">
+            {{ registerForm.errorMessage }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+          <input
+            matInput
+            formControlName="email"
+            type="text"
+            placeholder="Email"
+            required
+          />
+          <mat-error *ngIf="checkField('email')">
+            {{ registerForm.errorMessage }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input separator">
+          <input
+            matInput
+            formControlName="password"
+            [type]="hide ? 'password' : 'text'"
+            placeholder="Password"
+            required
+          />
+          <button mat-icon-button matSuffix (click)="hide = !hide">
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+
+          <mat-error *ngIf="checkField('password')">
+            {{ registerForm.errorMessage }}
+          </mat-error>
+        </mat-form-field>
+
+        <button
+          [disabled]="registerForm.baseForm.invalid"
+          mat-raised-button
+          type="submit"
+          color="primary"
+        >
+          Register
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

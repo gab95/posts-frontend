@@ -2,15 +2,39 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { MaterialModule } from './material.module';
+import { AppRoutingModule } from './app-routing.module';
+// import { SidebarModule } from './shared/components/sidebar/sidebar.module';
+
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AdminInterceptor } from './shared/interceptors/admin-interceptor';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    SidebarComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    AppRoutingModule,
+    // SidebarModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AdminInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

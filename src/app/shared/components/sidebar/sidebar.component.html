@@ -1,0 +1,21 @@
+<mat-nav-list>
+  <a mat-list-item routerLink="/feed">
+    <mat-icon>camera_alt</mat-icon>
+    <span class="nav-link">Feed</span>
+  </a>
+
+  <a mat-list-item routerLink="/profile">
+    <mat-icon>settings</mat-icon>
+    <span class="nav-link">Profile</span>
+  </a>
+
+  <a mat-list-item routerLink="/admin/users">
+    <mat-icon>cloud_upload </mat-icon>
+    <span class="nav-link">My Posts</span>
+  </a>
+
+  <a mat-list-item (click)="onExit()">
+    <mat-icon>exit_to_app</mat-icon>
+    <span class="nav-link">Exit</span>
+  </a>
+</mat-nav-list>
