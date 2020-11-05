@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loginForm.baseForm.reset();
     this.excludeProperties();
   }
 
@@ -28,7 +29,6 @@ export class LoginComponent implements OnInit {
     const formValue = this.loginForm.baseForm.value;
 
     this.authService.login(formValue).subscribe((res) => {
-      Swal.fire('Logged In!', 'Login Successful!!', 'success');
       this.router.navigate(['/home']);
     });
   }

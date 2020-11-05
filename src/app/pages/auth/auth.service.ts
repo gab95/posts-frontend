@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   constructor(private router: Router, private http: HttpClient) {
-    this.readToken();
+    this.checkToken();
   }
 
   login(authData: User): Observable<UserResponse | void> {

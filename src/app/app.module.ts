@@ -8,7 +8,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
-// import { SidebarModule } from './shared/components/sidebar/sidebar.module';
 
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -30,7 +29,6 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     ReactiveFormsModule,
     MaterialModule,
     AppRoutingModule,
-    // SidebarModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AdminInterceptor, multi: true },

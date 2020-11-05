@@ -1,6 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CheckLoginGuard } from './shared/guard/check-login.guard';
+import { AuthGuard } from './shared/guard/auth.guard';
+import { AdminGuard } from './shared/guard/admin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -14,8 +16,18 @@ const routes: Routes = [
 
   {
     path: 'home',
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
+  },
+
+  {
+    path: 'admin',
+    canLoad: [AuthGuard],
+    canActivate: [AdminGuard],
+    loadChildren: () =>
+      import('./pages/admin/admin.module').then((m) => m.AdminModule),
   },
 
   {
@@ -24,12 +36,6 @@ const routes: Routes = [
       import('./pages/not-found/not-found.module').then(
         (m) => m.NotFoundModule
       ),
-  },
-
-  {
-    path: 'admin',
-    loadChildren: () =>
-      import('./pages/admin/admin.module').then((m) => m.AdminModule),
   },
 ];
 
