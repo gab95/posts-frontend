@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AuthService } from '../auth/auth.service';
+import { HomeService } from './home.service';
+
+import { Post } from '../../shared/models/posts.interface';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +11,21 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(public authService: AuthService) {}
+  posts: Post[] = [];
 
-  ngOnInit(): void {}
+  constructor(
+    public authService: AuthService,
+    private homeService: HomeService
+  ) {}
+
+  ngOnInit(): void {
+    this.getAllPostFromOtherUsers();
+  }
+
+  getAllPostFromOtherUsers() {
+    this.homeService.getAllPostsFromOtherUsers().subscribe((resp: Post[]) => {
+      this.posts = resp;
+      console.log(this.posts);
+    });
+  }
 }

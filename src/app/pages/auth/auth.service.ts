@@ -84,7 +84,7 @@ export class AuthService {
   private handleError(err: any): Observable<never> {
     let errorMessage = 'An error occurred, please try later';
 
-    console.log(err);
+    console.log('error ', err);
 
     if (err) {
       errorMessage = `Error: ${err.error.message}`;

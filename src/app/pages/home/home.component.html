@@ -1,2 +1,19 @@
-<h1 *ngIf="authService.user$ | async">Welcome, user</h1>
-<p>home works!</p>
+<div class="row">
+  <div class="column" *ngFor="let p of posts">
+    <div class="card">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Post Uploaded by:</mat-card-title>
+          <mat-card-subtitle
+            >{{ p.user.name | titlecase }}
+            {{ p.user.lastname | titlecase }}</mat-card-subtitle
+          >
+        </mat-card-header>
+        <img mat-card-image [src]="p.image" alt="Photo of a Shiba Inu" />
+        <mat-card-content>
+          <p>{{ p.caption }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

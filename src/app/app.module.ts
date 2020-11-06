@@ -14,6 +14,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminInterceptor } from './shared/interceptors/admin-interceptor';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     AppRoutingModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AdminInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: AdminInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

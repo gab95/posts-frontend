@@ -13,3 +13,8 @@ export interface UserResponse {
   userId: number;
   role: Roles;
 }
+
+export interface UserPost {
+  name: string;
+  lastname: string;
+}

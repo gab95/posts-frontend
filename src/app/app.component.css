@@ -9,3 +9,7 @@ mat-sidenav-content {
 mat-sidenav-container {
   height: 100%;
 }
+
+.container {
+  text-align: center;
+}
