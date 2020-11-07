@@ -18,3 +18,10 @@ export interface UserPost {
   name: string;
   lastname: string;
 }
+
+export interface Profile {
+  name: string;
+  lastname: string;
+  email: string;
+  password: string;
+}

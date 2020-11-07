@@ -23,6 +23,22 @@ const routes: Routes = [
   },
 
   {
+    path: 'my-posts',
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/my-posts/my-posts.module').then((m) => m.MyPostsModule),
+  },
+
+  {
+    path: 'profile',
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/profile/profile.module').then((m) => m.ProfileModule),
+  },
+
+  {
     path: 'admin',
     canLoad: [AuthGuard],
     canActivate: [AdminGuard],

@@ -33,3 +33,11 @@
     margin-bottom: 20px;
   }
 }
+
+mat-card-footer {
+  margin-bottom: 8px;
+}
+
+button {
+  margin: 0 10px 0 20px;
+}

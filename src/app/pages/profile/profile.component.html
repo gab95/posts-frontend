@@ -1,9 +1,9 @@
 <div class="form">
   <mat-card>
     <mat-card-content>
-      <h1>Register</h1>
+      <h1>Profile</h1>
 
-      <form [formGroup]="registerForm.baseForm" (ngSubmit)="onRegister()">
+      <form [formGroup]="profileForm.baseForm" (ngSubmit)="onRegister()">
         <mat-form-field class="full-width-input">
           <input
             matInput
@@ -13,7 +13,7 @@
             required
           />
           <mat-error *ngIf="checkField('name')">
-            {{ registerForm.errorMessage }}
+            {{ profileForm.errorMessage }}
           </mat-error>
         </mat-form-field>
 
@@ -26,7 +26,7 @@
             required
           />
           <mat-error *ngIf="checkField('lastname')">
-            {{ registerForm.errorMessage }}
+            {{ profileForm.errorMessage }}
           </mat-error>
         </mat-form-field>
 
@@ -39,7 +39,7 @@
             required
           />
           <mat-error *ngIf="checkField('email')">
-            {{ registerForm.errorMessage }}
+            {{ profileForm.errorMessage }}
           </mat-error>
         </mat-form-field>
 
@@ -56,17 +56,17 @@
           </button>
 
           <mat-error *ngIf="checkField('password')">
-            {{ registerForm.errorMessage }}
+            {{ profileForm.errorMessage }}
           </mat-error>
         </mat-form-field>
 
         <button
-          [disabled]="registerForm.baseForm.invalid"
+          [disabled]="profileForm.baseForm.invalid"
           mat-raised-button
           type="submit"
           color="primary"
         >
-          Register
+          Update
         </button>
       </form>
     </mat-card-content>

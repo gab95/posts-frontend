@@ -6,22 +6,20 @@ import { map, catchError } from 'rxjs/operators';
 
 import Swal from 'sweetalert2';
 
-import { environment } from '../../../environments/environment';
-
 import { Post } from '../../shared/models/posts.interface';
 
+import { environment } from '../../../environments/environment';
 
 const API_URL = environment.API_URL;
-
 @Injectable({
   providedIn: 'root',
 })
-export class HomeService {
+export class MyPostsService {
   constructor(private http: HttpClient) {}
 
-  getAllPostsFromOtherUsers(): Observable<Post[]> {
-    return this.http.get(`${API_URL}/api/posts/all`).pipe(
-      map((resp: any) => resp.posts),
+  getAllPostFromLoggedInUsers(): Observable<Post[]> {
+    return this.http.get(`${API_URL}/api/posts`).pipe(
+      map((resp: any) => resp.rows),
       catchError((err) => this.handleError(err))
     );
   }
