@@ -24,8 +24,7 @@ body {
   height: 350px;
 }
 
-.form > .full-width-input,
-button {
+.form > .full-width-input {
   width: 100%;
 }
 
@@ -36,3 +35,5 @@ button {
 .full-width-input {
   width: 100%;
 }
+
+

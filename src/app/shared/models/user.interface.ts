@@ -24,4 +24,5 @@ export interface Profile {
   lastname: string;
   email: string;
   password: string;
+  role?: string;
 }

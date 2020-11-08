@@ -1,9 +1,9 @@
 <div class="form">
   <mat-card>
     <mat-card-content>
-      <h1>Profile</h1>
+      <h1>Edit Profile Info</h1>
 
-      <form [formGroup]="profileForm.baseForm" (ngSubmit)="onRegister()">
+      <form [formGroup]="profileForm.baseForm" (ngSubmit)="onUpdate()">
         <mat-form-field class="full-width-input">
           <input
             matInput
@@ -48,10 +48,15 @@
             matInput
             formControlName="password"
             [type]="hide ? 'password' : 'text'"
-            placeholder="Password"
+            placeholder="New Password"
             required
           />
-          <button mat-icon-button matSuffix (click)="hide = !hide">
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            type="button"
+          >
             <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
 
@@ -59,6 +64,15 @@
             {{ profileForm.errorMessage }}
           </mat-error>
         </mat-form-field>
+
+        <button
+          [routerLink]="['/home']"
+          mat-raised-button
+          type="button"
+          color="warn"
+        >
+          Cancel
+        </button>
 
         <button
           [disabled]="profileForm.baseForm.invalid"

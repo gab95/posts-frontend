@@ -1,0 +1,19 @@
+<div class="row" *ngIf="post">
+  <div class="column">
+    <div class="card">
+      <mat-card>
+        <mat-card-header>
+          <!-- <mat-card-title>Post ID: {{ post.id }}</mat-card-title> -->
+        </mat-card-header>
+        <img mat-card-image [src]="post.image" />
+        <mat-card-content>
+          <p>{{ post.caption }}</p>
+        </mat-card-content>
+
+        <mat-card-footer>
+          <button mat-raised-button type="button" color="primary">Edit</button>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>

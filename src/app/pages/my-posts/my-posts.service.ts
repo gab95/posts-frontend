@@ -24,6 +24,12 @@ export class MyPostsService {
     );
   }
 
+  getPostById(id: number) {
+    return this.http
+      .get(`${API_URL}/api/posts/${id}`)
+      .pipe(map((resp: any) => resp.posts));
+  }
+
   private handleError(err: any): Observable<never> {
     let errorMessage = 'An error occurred, please try later';
 

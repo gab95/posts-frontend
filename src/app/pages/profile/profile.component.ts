@@ -21,7 +21,6 @@ export class ProfileComponent implements OnInit {
   hide = true;
 
   constructor(
-    private router: Router,
     private authService: AuthService,
     private profileService: ProfileService,
     public profileForm: BaseFormUser
@@ -40,19 +39,19 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  onRegister() {
+  onUpdate() {
     if (this.profileForm.baseForm.invalid) {
       return;
     }
 
     const formValue = this.profileForm.baseForm.value;
-    this.authService.register(formValue).subscribe((res) => {
+    this.profileService.updateUserData(formValue).subscribe((res) => {
       Swal.fire(
-        'You are registered!',
-        'Now you can login to your account',
+        'Profile Data Updated!',
+        'Login with your new Email & Password',
         'success'
       );
-      this.router.navigate(['/auth/login']);
+      this.authService.logout();
     });
   }
 

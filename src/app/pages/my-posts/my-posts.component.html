@@ -1,9 +1,13 @@
+<button mat-raised-button type="button" color="primary" routerLink="new-post">
+  New Post
+</button>
+
 <div class="row">
-  <div class="column" *ngFor="let p of posts; let i = index">
+  <div class="column" *ngFor="let p of posts">
     <div class="card">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Post Number: {{ i + 1 }}</mat-card-title>
+          <mat-card-title>Post ID: {{ p.id }}</mat-card-title>
           <!-- <mat-card-subtitle
             >{{ p.user.name | titlecase }}
             {{ p.user.lastname | titlecase }}</mat-card-subtitle
@@ -15,9 +19,16 @@
         </mat-card-content>
 
         <mat-card-footer>
-          <button mat-raised-button type="button" color="warning">Edit</button>
+          <button
+            mat-raised-button
+            type="button"
+            color="primary"
+            [routerLink]="['/my-posts', p.id]"
+          >
+            Edit
+          </button>
 
-          <button mat-raised-button type="button" color="danger">Delete</button>
+          <button mat-raised-button type="button" color="warn">Delete</button>
         </mat-card-footer>
       </mat-card>
     </div>
