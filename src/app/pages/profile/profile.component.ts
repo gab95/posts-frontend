@@ -9,6 +9,7 @@ import { ProfileService } from './profile.service';
 
 import { BaseFormUser } from '../../shared/utils/base-form-user';
 import { Profile } from '../../shared/models/user.interface';
+import { UtilsService } from '../../shared/service/utils.service';
 
 @Component({
   selector: 'app-profile',
@@ -23,6 +24,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private profileService: ProfileService,
+    private utilsService: UtilsService,
     public profileForm: BaseFormUser
   ) {}
 
@@ -51,6 +53,7 @@ export class ProfileComponent implements OnInit {
         'Login with your new Email & Password',
         'success'
       );
+      this.utilsService.openSidebar(false);
       this.authService.logout();
     });
   }

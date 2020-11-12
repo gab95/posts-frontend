@@ -6,9 +6,16 @@ import { MyPostsComponent } from './my-posts.component';
 import { MaterialModule } from '../../material.module';
 
 import { PostComponent } from './post/post.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [MyPostsComponent, PostComponent],
-  imports: [CommonModule, MaterialModule, MyPostsRoutingModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialModule,
+    MyPostsRoutingModule,
+  ],
 })
 export class MyPostsModule {}

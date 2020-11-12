@@ -30,6 +30,17 @@ export class MyPostsService {
       .pipe(map((resp: any) => resp.posts));
   }
 
+  uploadNewPost(image: File, caption: string) {
+    const formData = new FormData();
+    formData.append('image', image);
+    formData.append('caption', caption);
+
+    return this.http.post(`${API_URL}/api/posts`, formData).pipe(
+      // map((resp: any) => resp),
+      catchError((err) => this.handleError(err))
+    );
+  }
+
   private handleError(err: any): Observable<never> {
     let errorMessage = 'An error occurred, please try later';
 

@@ -1,19 +1,51 @@
-<div class="row" *ngIf="post">
-  <div class="column">
-    <div class="card">
-      <mat-card>
-        <mat-card-header>
-          <!-- <mat-card-title>Post ID: {{ post.id }}</mat-card-title> -->
-        </mat-card-header>
-        <img mat-card-image [src]="post.image" />
-        <mat-card-content>
-          <p>{{ post.caption }}</p>
-        </mat-card-content>
+<div class="form">
+  <mat-card>
+    <mat-card-content>
+      <h1>{{ formTitle }}</h1>
 
-        <mat-card-footer>
-          <button mat-raised-button type="button" color="primary">Edit</button>
-        </mat-card-footer>
-      </mat-card>
-    </div>
-  </div>
+      <div class="image">
+        <img *ngIf="!imageTemp && post" [src]="post.image" class="img-avatar" />
+        <img *ngIf="imageTemp" [src]="imageTemp" class="img-avatar" />
+      </div>
+
+      <mat-form-field>
+        <mat-toolbar>
+          <!-- Readonly Input to show File names -->
+          <input matInput readonly />
+
+          <!-- Browse Button -->
+          <button mat-flat-button color="primary">Browse</button>
+        </mat-toolbar>
+
+        <input
+          id="fileUpload"
+          (change)="cambiarImagen($event.target.files[0])"
+          type="file"
+          accept="image/*"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input separator">
+        <input #caption matInput placeholder="Caption" required />
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        type="button"
+        color="warn"
+        routerLink="/my-posts"
+      >
+        Cancel
+      </button>
+
+      <button
+        mat-raised-button
+        type="button"
+        color="primary"
+        (click)="uploadPost(caption.value)"
+      >
+        {{ buttonLabel }}
+      </button>
+    </mat-card-content>
+  </mat-card>
 </div>
